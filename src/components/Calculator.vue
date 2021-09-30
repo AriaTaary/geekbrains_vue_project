@@ -2,9 +2,9 @@
     <div>
         <h1>Calculator</h1>
      <div class="calc-display">
-       <input class="calc-input" v-model.number="operand1"/>
+       <input @click="picked = 'operand1'" class="calc-input" v-model.number="operand1"/>
        <p class="calc-func">{{ operator }}</p>
-       <input class="calc-input" v-model.number="operand2"/>
+       <input @click="picked = 'operand2'" class="calc-input" v-model.number="operand2"/>
        <p class="calc-func">=</p>
        <p class="calc-result">{{ result }}</p>
      </div>
@@ -97,7 +97,7 @@ export default {
       this.operator='%';
     },
     displayKeyboard(value){
-      this.picked === 'operand1' ? this.operand1 = this.operand1 + value : this.operand2 = this.operand2 + value;
+      this.picked === 'operand1' ? this.operand1 = Number(this.operand1 + value) : this.operand2 = Number(this.operand2 + value);
     },
     deleteLastSymbol(){
       if(this.picked === 'operand1'){
